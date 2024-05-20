@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33122.133
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Backend-Rentify", "Backend-Rentify\Backend-Rentify.csproj", "{07DEF274-3007-4BD5-A5C8-31373654732D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{07DEF274-3007-4BD5-A5C8-31373654732D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{07DEF274-3007-4BD5-A5C8-31373654732D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{07DEF274-3007-4BD5-A5C8-31373654732D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{07DEF274-3007-4BD5-A5C8-31373654732D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3969B19F-8FD2-4AB8-9662-4983AC12946E}
+	EndGlobalSection
+EndGlobal
