@@ -27,7 +27,16 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+app.UseRouting();
+app.UseAuthentication();
 app.UseAuthorization();
+app.UseCors(x => x
+    .AllowAnyOrigin()
+    .AllowAnyMethod()
+    .AllowAnyHeader()
+    .AllowCredentials()
+    .WithExposedHeaders("Authorization")
+    .WithOrigins("https://localhost:4200 ", "http://localhost:4200"));
 app.UseMiddleware<ErrorHandlerMiddleware>();
 app.UseMiddleware<JWTMiddleware>();
 

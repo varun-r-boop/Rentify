@@ -1,5 +1,6 @@
 ﻿using Backend_Rentify.Business.Enums;
 using Backend_Rentify.Business.Models;
+using Backend_Rentify.Business.Models.Auth;
 using Backend_Rentify.Core.Models;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
@@ -37,7 +38,7 @@ namespace Backend_Rentify.API.Helpers
                 {
                     new Claim(ClaimTypes.Email, user.Email),
                     new Claim(ClaimTypes.Role, user.UserType.ToString()),
-                    new Claim(ClaimTypes.Name, user.UserName),
+                    new Claim(ClaimTypes.Name, user.FirstName),
                     new Claim("id", user.Id.ToString())
                 }),
                 Expires = DateTime.UtcNow.AddDays(7),

@@ -13,10 +13,10 @@ namespace Backend_Rentify.API.Middleware
         }
 
         public async Task Invoke(HttpContext context, IJWTHelper jwtHelper)
-        {
+            {
 
             var token = context.Request.Headers["Authorization"].FirstOrDefault()?.Split(" ").Last();
-
+            if (token == "null") token = null;
             if (token != null)
             {
                 var userData = jwtHelper.ValidateToken(token);

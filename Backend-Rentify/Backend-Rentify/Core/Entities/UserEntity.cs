@@ -9,9 +9,6 @@ namespace Backend_Rentify.Core.Entities
         [BsonId]
         public string Id { get; set; }
 
-        [BsonElement("userName")]
-        public string UserName { get; set; }
-
         [BsonElement("firstName")]
         public string FirstName { get; set; }
 
@@ -19,7 +16,7 @@ namespace Backend_Rentify.Core.Entities
         public string LastName { get; set; }
 
         [BsonElement("userType")]
-        public UserType UserTYpe { get; set; }
+        public UserType UserType { get; set; }
 
         [BsonElement("emailId")]
         public string Email { get; set; }

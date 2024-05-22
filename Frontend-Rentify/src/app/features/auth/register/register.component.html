@@ -1,0 +1,85 @@
+<div class="registration-container">
+    <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="firstName">First Name</label>
+        <input id="firstName" formControlName="firstName" type="text" [ngClass]="{ 'is-invalid': submitted && f['firstName'].errors }">
+        <div *ngIf="submitted && f['firstName'].errors" class="invalid-feedback">
+            <div *ngIf="f['firstName'].errors['required']">
+              <small class="text-danger">FirstName is required</small>
+            </div>
+          </div>
+      </div>
+      <div class="form-group">
+        <label for="lastName">Last Name</label>
+        <input id="lastName" formControlName="lastName" type="text">
+        <div *ngIf="submitted && f['lastName'].errors" class="invalid-feedback">
+            <div *ngIf="f['lastName'].errors['required']">
+              <small class="text-danger">LastName is required</small>
+            </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <div>
+          <label>
+            <input type="radio" formControlName="userType" [value]="userType.Buyer"> Buyer
+          </label>
+          <label>
+            <input type="radio" formControlName="userType" [value]="userType.Seller"> Seller
+          </label>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input id="email" formControlName="email" type="email">
+        <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
+            <div *ngIf="f['email'].errors['required']">
+              <small class="text-danger">Email is required</small>
+            </div>
+            <div *ngIf="f['email'].errors['email']">
+              <small class="text-danger">Enter a valid Email</small>
+            </div>
+          </div>
+      </div>
+      <div class="form-group">
+        <label for="mobile">Mobile</label>
+        <input id="mobile" formControlName="mobile" type="text">
+        <div *ngIf="submitted && f['mobile'].errors" class="invalid-feedback">
+            <div *ngIf="f['mobile'].errors['required']">
+              <small class="text-danger">MobileNumber is required</small>
+            </div>
+            <div *ngIf="f['mobile'].errors['pattern']">
+              <small class="text-danger">Only Numbers are Allowed</small>
+            </div>
+            <div *ngIf="f['mobile'].errors['minLength']">
+              <small class="text-danger">Minimum 10 Numbers</small>
+            </div>
+          </div>
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input id="password" formControlName="password" type="password">
+        <div *ngIf="submitted && f['password'].errors" class="invalid-feedback">
+            <div *ngIf="f['password'].errors['required']">
+              <small class="text-danger">Password is required</small>
+            </div>
+            <div *ngIf="f['password'].errors['minlength']">
+              <small class="text-danger">Password Length must be Minimum 8</small>
+            </div>
+          </div>
+      </div>
+      <div class="form-group">
+        <label for="confirmPassword">Confirm Password</label>
+        <input id="confirmPassword" formControlName="confirmPassword" type="password">
+        <div *ngIf="submitted && f['confirmPassword'].errors" class="invalid-feedback">
+            <div *ngIf="f['confirmPassword'].errors['mustMatch']">
+              <small class="text-danger">Passwords must match</small>
+            </div>
+        </div>
+      </div>
+      <button type="submit">Register</button>
+    </form>
+    <div class="signup-link">
+        <a (click)="navigateToLogin()">Already a user ? Login</a>
+      </div>
+  </div>
+  
