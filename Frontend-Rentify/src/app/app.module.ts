@@ -10,10 +10,11 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { MainModule } from './features/main.module';
 import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
@@ -21,9 +22,10 @@ import { ToastrModule } from 'ngx-toastr';
     AppRoutingModule,
     NgxSpinnerModule,
     MainModule,
-    ToastrModule.forRoot({    timeOut: 300000000000,
+    ToastrModule.forRoot({    timeOut: 3000,
       positionClass: 'toast-top-right',
-      preventDuplicates: true})
+      preventDuplicates: true}),
+    BrowserAnimationsModule,
   ],
   providers: [  
       { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

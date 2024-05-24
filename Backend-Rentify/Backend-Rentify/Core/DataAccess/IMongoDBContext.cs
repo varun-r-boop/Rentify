@@ -13,6 +13,8 @@ namespace Backend_Rentify.Core.DataAccess
         IMongoClient DbClient { get; }
         IMongoDatabase MongoDatabase { get; }
         IMongoCollection<UserEntity> Users { get; }
+        IMongoCollection<PropertyEntity> Property { get; }
+
 
     }
 }

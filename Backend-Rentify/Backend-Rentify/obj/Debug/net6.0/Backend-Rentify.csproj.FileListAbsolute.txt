@@ -53,3 +53,4 @@ C:\Users\varun\source\repos\Rentify\Backend-Rentify\Backend-Rentify\bin\Debug\ne
 C:\Users\varun\source\repos\Rentify\Backend-Rentify\Backend-Rentify\bin\Debug\net6.0\System.Text.Json.dll
 C:\Users\varun\source\repos\Rentify\Backend-Rentify\Backend-Rentify\bin\Debug\net6.0\BCrypt.Net-Next.dll
 C:\Users\varun\source\repos\Rentify\Backend-Rentify\Backend-Rentify\bin\Debug\net6.0\BouncyCastle.Crypto.dll
+C:\Users\varun\source\repos\Rentify\Backend-Rentify\Backend-Rentify\bin\Debug\net6.0\MongoDB.Driver.GridFS.dll

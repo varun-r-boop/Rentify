@@ -10,62 +10,59 @@ import { JwtService } from 'src/app/core/services/jwt.service';
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
-  encapsulation: ViewEncapsulation.Emulated // Ensure encapsulation is set
+  encapsulation: ViewEncapsulation.Emulated, // Ensure encapsulation is set
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
-  login : Login = {
+  login: Login = {
     email: '',
-    password: ''
+    password: '',
   };
   constructor(
-    private fb: FormBuilder, 
-    private _authService : AuthService, 
-    private _router : Router, 
-    private _toastr : ToastrService,
-    private _jwtService : JwtService
-    ) {
+    private fb: FormBuilder,
+    private _authService: AuthService,
+    private _router: Router,
+    private _toastr: ToastrService,
+    private _jwtService: JwtService
+  ) {
     this.loginForm = this.fb.group({
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(6)]]
+      password: ['', [Validators.required, Validators.minLength(6)]],
     });
   }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {}
 
   onSubmit(): void {
     if (this.loginForm.valid) {
       this.login = this.loginForm.value;
       this.fetchLoginUser(this.login);
-        }
+    }
   }
 
-  fetchLoginUser(login : Login){
+  fetchLoginUser(login: Login) {
     this._authService.login(login).subscribe({
       next: (res) => {
-        const token = res['headers'].get('authorization')
-        if(token){
+        const token = res['headers'].get('authorization');
+        if (token) {
           window.localStorage.removeItem('auth-token');
           window.localStorage.setItem('auth-token', token);
           var tokenPayload = this._jwtService.getDecodedToken(token);
-          if(tokenPayload.role === "Buyer")
-            {
-    
-            }
-            else{
-            }
+          window.localStorage.setItem('user-details', JSON.stringify(tokenPayload));
+          if (tokenPayload.role === 'Buyer') {
+            this._router.navigate(['/buyer']);
+          } else {
+            this._router.navigate(['/seller']);
+          }
         }
-        
       },
-      error: (err) => {
-        
-      }
-    })
+      error: (err) => {},
+    });
   }
 
-  navigateToRegister(){
-    this._router.navigate(['/register'])
+  navigateToRegister() {
+    this._router.navigate(['/register']);
   }
 }

@@ -1,0 +1,26 @@
+<div class="property-upload-container">
+    <form [formGroup]="propertyForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="place">Place</label>
+        <input id="place" formControlName="place" type="text">
+      </div>
+      <div class="form-group">
+        <label for="area">Area (sq ft)</label>
+        <input id="area" formControlName="area" type="text">
+      </div>
+      <div class="form-group">
+        <label for="bedrooms">Number of Bedrooms</label>
+        <input id="bedrooms" formControlName="bedrooms" type="text">
+      </div>
+      <div class="form-group">
+        <label for="nearby">Hospitals & Colleges Nearby</label>
+        <textarea id="nearby" formControlName="nearby"></textarea>
+      </div>
+      <div class="form-group">
+        <label for="image">Property Image</label>
+        <input id="image" type="file" (change)="onImageChange($event)">
+      </div>
+      <button type="submit" [disabled]="propertyForm.invalid">Upload Property</button>
+    </form>
+  </div>
+  

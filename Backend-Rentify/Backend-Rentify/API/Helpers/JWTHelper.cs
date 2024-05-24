@@ -22,16 +22,16 @@ namespace Backend_Rentify.API.Helpers
         private readonly AppSettings _appSettings;
         private readonly IConfiguration _config;
 
-        public JWTHelper(IOptions<AppSettings> appSettings, IConfiguration config)
+        public JWTHelper(AppSettings appSettings, IConfiguration config)
         {
-            _appSettings = appSettings.Value;
+            _appSettings = appSettings;
             _config = config;
         }
 
         public string GenerateToken(User user)
         {
             var tokenHandler = new JwtSecurityTokenHandler();
-            var key = Encoding.ASCII.GetBytes(_config[_appSettings.Secret]);
+            var key = Encoding.ASCII.GetBytes(_appSettings.Secret);
             var tokenDescriptor = new SecurityTokenDescriptor
             {
                 Subject = new ClaimsIdentity(new Claim[]
@@ -52,7 +52,7 @@ namespace Backend_Rentify.API.Helpers
         public JWTData? ValidateToken(string token)
         {
             var tokenHandler = new JwtSecurityTokenHandler();
-            var key = Encoding.ASCII.GetBytes(_config[_appSettings.Secret]);
+            var key = Encoding.ASCII.GetBytes(_appSettings.Secret);
 
             try
             {

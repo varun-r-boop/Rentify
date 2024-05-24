@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "i/RbzhWCiRD5420EHbhCR2Qqr/a+Z492bFw0JF+HV60pcl9ij2r1R/Gx6o3FKGrFDe2kiWRqaRZuaMvnMDKh6g==",
+  "dgSpecHash": "La48g5o1ujYFuYkniwtdKkWTpmxy676rP0dQcleCnP00C+xQEWr7McXgsDsiBGo7Sh1bjnkZ7dTa+Jrb3Cfasw==",
   "success": true,
   "projectFilePath": "C:\\Users\\varun\\source\\repos\\Rentify\\Backend-Rentify\\Backend-Rentify\\Backend-Rentify.csproj",
   "expectedPackageFiles": [
@@ -21,6 +21,7 @@
     "C:\\Users\\varun\\.nuget\\packages\\mongodb.bson\\2.25.0\\mongodb.bson.2.25.0.nupkg.sha512",
     "C:\\Users\\varun\\.nuget\\packages\\mongodb.driver\\2.25.0\\mongodb.driver.2.25.0.nupkg.sha512",
     "C:\\Users\\varun\\.nuget\\packages\\mongodb.driver.core\\2.25.0\\mongodb.driver.core.2.25.0.nupkg.sha512",
+    "C:\\Users\\varun\\.nuget\\packages\\mongodb.driver.gridfs\\2.25.0\\mongodb.driver.gridfs.2.25.0.nupkg.sha512",
     "C:\\Users\\varun\\.nuget\\packages\\mongodb.libmongocrypt\\1.8.2\\mongodb.libmongocrypt.1.8.2.nupkg.sha512",
     "C:\\Users\\varun\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512",
     "C:\\Users\\varun\\.nuget\\packages\\portable.bouncycastle\\1.9.0\\portable.bouncycastle.1.9.0.nupkg.sha512",

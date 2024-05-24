@@ -1,0 +1,13 @@
+<div class="grid-container">
+    <div class="row">
+      <div class="col-sm-4" *ngFor="let property of properties">
+          <div class="card-body">
+            <h5 class="card-title">{{ property.place }}</h5>
+            <p class="card-text"><strong>Area:</strong> {{ property.area }}</p>
+            <p class="card-text"><strong>Info:</strong> {{ property.info }}</p>
+            <!-- Add more property details here -->
+          </div>
+      </div>
+    </div>
+  </div>
+  

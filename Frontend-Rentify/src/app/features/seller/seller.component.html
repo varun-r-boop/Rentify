@@ -1,0 +1,6 @@
+
+<div class="d-flex">
+    <app-sidebar (tabChangeEvent)="tabChangeEvent($event)"></app-sidebar>
+    <app-seller-property-upload *ngIf="showUploadProperty"></app-seller-property-upload>
+    <app-seller-properties *ngIf="!showUploadProperty"></app-seller-properties>
+</div>

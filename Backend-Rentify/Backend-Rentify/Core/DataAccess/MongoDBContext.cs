@@ -45,5 +45,6 @@ namespace Backend_Rentify.Core.DataAccess
         public IMongoClient DbClient => _dbClient;
 
         public IMongoCollection<UserEntity> Users => MongoDatabase.GetCollection<UserEntity>(MongoCollections.Users);
+        public IMongoCollection<PropertyEntity> Property => MongoDatabase.GetCollection<PropertyEntity>(MongoCollections.Property);
     }
 }
