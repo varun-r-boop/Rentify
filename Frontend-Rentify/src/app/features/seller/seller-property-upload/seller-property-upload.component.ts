@@ -50,7 +50,7 @@ export class SellerPropertyUploadComponent implements OnInit {
         this.propertyEntity.id = '';
         this.propertyEntity.userId = userDetails?.id;
         this.propertyEntity.image = '';
-        this.propertyEntity.info = '';
+        this.propertyEntity.info = this.propertyForm.controls['nearby'].value;
       }
       this.fetchUploadProperty(this.propertyEntity)
     }

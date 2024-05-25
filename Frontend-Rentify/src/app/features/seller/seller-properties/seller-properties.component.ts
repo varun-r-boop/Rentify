@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { SellerService } from '../../services/seller.service';
+import { Property } from '../../model/seller.model';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-seller-properties',
@@ -7,12 +9,21 @@ import { SellerService } from '../../services/seller.service';
   styleUrls: ['./seller-properties.component.scss']
 })
 export class SellerPropertiesComponent {
-  properties: any[] = [];
-
-  constructor(private _sellerService: SellerService) { }
+  properties: any;
+  selectedProperty  : any;
+  constructor(private _sellerService: SellerService,private _modalService: NgbModal) { }
 
   ngOnInit(): void {
     this.loadProperties();
+  }
+
+  openEditModal(property: any) {
+    this.selectedProperty = { ...property };
+    const modalRef = this._modalService.open('#editModal');
+  }
+
+  saveChanges() {
+    this._modalService.dismissAll();
   }
 
   loadProperties(): void {

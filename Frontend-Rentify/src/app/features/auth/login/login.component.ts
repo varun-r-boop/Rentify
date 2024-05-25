@@ -50,6 +50,7 @@ export class LoginComponent implements OnInit {
           window.localStorage.removeItem('auth-token');
           window.localStorage.setItem('auth-token', token);
           var tokenPayload = this._jwtService.getDecodedToken(token);
+          window.localStorage.setItem('user-id', tokenPayload.id);
           window.localStorage.setItem('user-details', JSON.stringify(tokenPayload));
           if (tokenPayload.role === 'Buyer') {
             this._router.navigate(['/buyer']);

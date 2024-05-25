@@ -8,6 +8,8 @@ import { SellerPropertyUploadComponent } from './seller/seller-property-upload/s
 import { ReactiveFormsModule } from "@angular/forms";
 import { SharedModule } from "../shared/shared.module";
 import { SellerPropertiesComponent } from './seller/seller-properties/seller-properties.component';
+import { CommonModule } from "@angular/common";
+import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 
 
 @NgModule({
@@ -23,6 +25,9 @@ import { SellerPropertiesComponent } from './seller/seller-properties/seller-pro
         BrowserAnimationsModule,
         MainRoutingModule,
         SharedModule,
+        CommonModule ,
+        NgModule,
+        NgbModule 
     ]
 })
 export class MainModule {}
