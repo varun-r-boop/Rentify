@@ -5,11 +5,12 @@ import { MainRoutingModule } from "./main-routing.module";
 import { SellerComponent } from './seller/seller.component';
 import { BuyerComponent } from './buyer/buyer.component';
 import { SellerPropertyUploadComponent } from './seller/seller-property-upload/seller-property-upload.component';
-import { ReactiveFormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { SharedModule } from "../shared/shared.module";
 import { SellerPropertiesComponent } from './seller/seller-properties/seller-properties.component';
 import { CommonModule } from "@angular/common";
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
+import { EditPropertyModalComponent } from "./seller/seller-properties/edit-property-modal/edit-property-modal.component";
 
 
 @NgModule({
@@ -17,17 +18,17 @@ import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
     SellerComponent,
     BuyerComponent,
     SellerPropertyUploadComponent,
-    SellerPropertiesComponent
+    SellerPropertiesComponent,
+    EditPropertyModalComponent
   ],
     imports: [
+        FormsModule,
         ReactiveFormsModule,
         AuthModule,
         BrowserAnimationsModule,
         MainRoutingModule,
         SharedModule,
         CommonModule ,
-        NgModule,
-        NgbModule 
-    ]
+        NgbModule     ]
 })
 export class MainModule {}

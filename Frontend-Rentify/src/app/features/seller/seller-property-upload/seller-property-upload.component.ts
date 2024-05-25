@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { PropertyEntity } from '../../model/seller.model';
+import { PropertyEntity,ContactDetails } from '../../model/seller.model';
 import { SellerService } from '../../services/seller.service';
 import { ToastrService } from 'ngx-toastr';
 
@@ -11,13 +11,19 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class SellerPropertyUploadComponent implements OnInit {
   propertyForm: FormGroup;
+  contact: ContactDetails = {
+    mobile: '',
+    email: ''
+  };
   propertyEntity : PropertyEntity = {
     id: '',
     userId: '',
     place: '',
     area: 0,
     info: '',
-    image: ''
+    image: '',
+    intrestedUserIds: [],
+    contact: this.contact 
   };
   constructor(private fb: FormBuilder, private _sellerService : SellerService,     private _toastr: ToastrService,
   ) {
@@ -26,7 +32,7 @@ export class SellerPropertyUploadComponent implements OnInit {
       area: ['', Validators.required],
       bedrooms: ['', [Validators.required, Validators.pattern('^[0-9]*$')]],
       nearby: ['', Validators.required],
-      image: [null, Validators.required]
+      image: ['', Validators.required]
     });
   }
 
@@ -35,13 +41,18 @@ export class SellerPropertyUploadComponent implements OnInit {
   onImageChange(event: any): void {
     const file = event.target.files[0];
     if (file) {
-      this.propertyForm.patchValue({
-        image: file
-      }); 
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => {
+        const base64String = reader.result as string;
+        this.propertyForm.patchValue({
+          image: base64String
+        }); 
+      };
     }
   }
 
-  onSubmit(): void {
+  onSubmit() {
     if (this.propertyForm.valid) {
       this.propertyEntity = this.propertyForm.value;
       const tokenPayload = window.localStorage.getItem('user-details');
@@ -49,8 +60,14 @@ export class SellerPropertyUploadComponent implements OnInit {
         const userDetails = JSON.parse(tokenPayload);
         this.propertyEntity.id = '';
         this.propertyEntity.userId = userDetails?.id;
-        this.propertyEntity.image = '';
+        this.propertyEntity.image = this.propertyForm.controls['image'].value;;
         this.propertyEntity.info = this.propertyForm.controls['nearby'].value;
+        const contact : ContactDetails = {
+          mobile: userDetails.mobile,
+          email: userDetails.email
+        };
+        this.propertyEntity.contact = contact;
+        this.propertyEntity.intrestedUserIds = [];
       }
       this.fetchUploadProperty(this.propertyEntity)
     }
@@ -63,6 +80,7 @@ export class SellerPropertyUploadComponent implements OnInit {
           timeOut: 3000,
           positionClass:'top-right'
         });
+        this.propertyForm.reset();
       },
       error: (err) => {},
     });

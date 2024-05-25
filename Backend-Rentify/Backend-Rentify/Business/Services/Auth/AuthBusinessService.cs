@@ -42,6 +42,7 @@ namespace Backend_Rentify.Business.Services.Auth
             userModel.Email = user.Email;
             userModel.UserType = user.UserType;
             userModel.FirstName = user.FirstName;
+            userModel.Mobile = user.Mobile;
             if (!VerifyPasswordHash(user.Password, login.Password))
             {
                 throw new Exception("Password is wrong");

@@ -36,5 +36,30 @@ namespace Backend_Rentify.API.Controllers
             var response = await _sellerBusinessService.GetUserProperties(userId);
             return response;
         }
+        [HttpGet]
+        [Route("property")]
+        public async Task<Property> UserPropery([FromQuery] string propertyId)
+        {
+            var response = await _sellerBusinessService.GetPropertyById(propertyId);
+            return response;
+        }
+
+        [HttpPut]
+        [Route("updateProperty")]
+        public async Task<BaseResponse> UpdateProperty([FromBody] Property property)
+        {
+            var response = new BaseResponse();
+            response.IsSuccess = await _sellerBusinessService.UpdateProperty(property);
+            return response;
+        }
+
+        [HttpDelete]
+        [Route("deleteProperty")]
+        public async Task<BaseResponse> DeleteProperty([FromQuery] string propertyId)
+        {
+            var response = new BaseResponse();
+            response.IsSuccess = await _sellerBusinessService.DeleteProperty(propertyId);
+            return response;
+        }
     }
 }

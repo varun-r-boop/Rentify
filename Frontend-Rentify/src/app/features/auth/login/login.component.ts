@@ -52,6 +52,9 @@ export class LoginComponent implements OnInit {
           var tokenPayload = this._jwtService.getDecodedToken(token);
           window.localStorage.setItem('user-id', tokenPayload.id);
           window.localStorage.setItem('user-details', JSON.stringify(tokenPayload));
+          this._toastr.success('', 'Login Success', {
+            timeOut: 3000,
+          });
           if (tokenPayload.role === 'Buyer') {
             this._router.navigate(['/buyer']);
           } else {

@@ -1,0 +1,33 @@
+.form-control:focus {
+  box-shadow: none;
+}
+
+.form-control-underlined {
+  border-width: 0;
+  border-bottom-width: 1px;
+  border-radius: 0;
+  padding-left: 0;
+}
+
+
+.form-control::placeholder {
+  font-size: 0.95rem;
+  color: rgba(63, 81, 181, 0.92);
+  font-style: italic;
+}
+
+.outer{
+  background-color: white;
+  border-radius: 20px;
+}
+
+.search-enter{
+  padding: 10px;
+    color: blue;
+    cursor: pointer;
+}
+.search-clear{
+  padding: 10px;
+  color: blue;
+  cursor: pointer;
+}

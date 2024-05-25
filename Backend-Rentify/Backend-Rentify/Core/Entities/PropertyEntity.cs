@@ -1,4 +1,5 @@
 ﻿using Backend_Rentify.Business.Enums;
+using Backend_Rentify.Business.Models.Seller;
 using MongoDB.Bson.Serialization.Attributes;
 
 namespace Backend_Rentify.Core.Entities
@@ -23,7 +24,10 @@ namespace Backend_Rentify.Core.Entities
 
             [BsonElement("image")]
             public string Image { get; set; }
+            [BsonElement("contact")]
+            public ContactDetails Contact { get; set; }
+            [BsonElement("intrestedUserIds")]
+            public List<string> IntrestedUserIds{ get; set; }
 
-
-        }
+    }
 }

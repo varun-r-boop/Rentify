@@ -37,6 +37,7 @@ namespace Backend_Rentify.API.Helpers
                 Subject = new ClaimsIdentity(new Claim[]
                 {
                     new Claim(ClaimTypes.Email, user.Email),
+                    new Claim("mobile", user.Mobile),
                     new Claim(ClaimTypes.Role, user.UserType.ToString()),
                     new Claim(ClaimTypes.Name, user.FirstName),
                     new Claim("id", user.Id.ToString())
@@ -69,7 +70,8 @@ namespace Backend_Rentify.API.Helpers
                 var jwtData = new JWTData
                 {
                     Id = new Guid(jwtToken.Claims.First(claim => claim.Type == "id").Value).ToString(),
-                    UserType = (UserType)Enum.Parse(typeof(UserType), jwtToken.Claims.First(claim => claim.Type == ClaimTypes.Role).Value)
+                    UserType = (UserType)Enum.Parse(typeof(UserType), 
+                    jwtToken.Claims.First(claim => claim.Type == ClaimTypes.Role).Value)
                 };
 
                 return jwtData;

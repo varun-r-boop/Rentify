@@ -7,8 +7,8 @@
             IsSuccess = true;
         }
         public bool IsSuccess { get; set; }
-        public string Exception { get; set; }
-        public string StackTrace { get; set; }
+        public string? Exception { get; set; }
+        public string? StackTrace { get; set; }
 
     }
 }

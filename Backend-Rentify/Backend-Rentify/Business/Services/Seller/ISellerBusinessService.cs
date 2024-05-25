@@ -7,5 +7,10 @@ namespace Backend_Rentify.Business.Services.Seller
     {
         Task<bool> UploadProperty(PropertyEntity property);
         Task<List<Property>> GetUserProperties(string userId);
+        Task<Property> GetPropertyById(string propertyId);
+        Task<bool> UpdateProperty(Property property);
+        Task<bool> DeleteProperty(string propertyId);
+
+
     }
 }

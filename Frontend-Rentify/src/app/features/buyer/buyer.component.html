@@ -1,1 +1,22 @@
-<p>buyer works!</p>
+<app-search class="search-container" (searchCallback)="searchCallback($event)"></app-search>
+
+<div class="container">
+    <div class="row">
+      <div class="col-md-4" style="padding: 10px;" *ngFor="let property of properties">
+        <div class="card">
+          <img [src]="property.image" class="card-img-top" alt="Property Image">
+          <div class="card-body">
+            <h5 class="card-title">{{ property.place }}</h5>
+            <p class="card-text">Area: {{ property.area }}</p>
+            <p class="card-text">Info: {{ property.info }}</p>
+            <div class="button-group">
+              <button class="btn btn-primary" (click)="openDetailsModal(property.id)">View Details</button>
+              <button type="button" class="btn btn-success" (click)="fetchUpdateInterest(property)">I am Interested</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button *ngIf="properties && properties.length > 0" class="btn btn-primary" (click)="loadPadinationData()">Load more</button>
+    </div>
+  </div>
+  

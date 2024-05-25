@@ -1,5 +1,4 @@
 ﻿using Backend_Rentify.Business.Enums;
-using MongoDB.Bson.Serialization.Attributes;
 
 namespace Backend_Rentify.Business.Models.Auth
 {
@@ -10,6 +9,7 @@ namespace Backend_Rentify.Business.Models.Auth
         public string LastName { get; set; }
         public UserType UserType { get; set; }
         public string Email { get; set; }
+        public string Mobile { get; set; }
         public string ProfileLogoUrl { get; set; }
         public bool IsEmailVerified { get; set; }
     }

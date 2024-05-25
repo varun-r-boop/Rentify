@@ -1,0 +1,17 @@
+<div class="modal-header">
+    <h5 class="modal-title" id="editModalLabel">Property details</h5>
+
+  </div>
+  <div class="modal-body">
+      <div class="modal-body">
+        <img [src]="property?.image" class="img-fluid" alt="Property Image">
+        <p><strong>Area:</strong> {{ property?.area }}</p>
+        <p><strong>Info:</strong> {{ property?.info }}</p>
+        <p><strong>Email:</strong> {{ property?.contact?.email }}</p>
+        <p><strong>Mobile:</strong> {{ property?.contact?.mobile }}</p>
+      </div>    
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" (click)="activeModal.dismiss()">Close</button>
+  </div>
+  

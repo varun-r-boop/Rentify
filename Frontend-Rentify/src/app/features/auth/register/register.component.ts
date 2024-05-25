@@ -68,6 +68,9 @@ export class RegisterComponent implements OnInit {
           timeOut: 3000,
           positionClass:'top-right'
         });
+        this._toastr.success('', 'Register Success', {
+          timeOut: 3000,
+        });
         this._router.navigate(['/login'])
       }else{
         this._toastr.error('Register Failed', '', {

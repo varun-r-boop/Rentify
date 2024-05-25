@@ -1,5 +1,6 @@
 ﻿using Backend_Rentify.API.Helpers;
 using Backend_Rentify.Business.Services.Auth;
+using Backend_Rentify.Business.Services.Buyer;
 using Backend_Rentify.Business.Services.Seller;
 using Backend_Rentify.Core.DataAccess;
 
@@ -13,6 +14,7 @@ namespace Backend_Rentify.Core.Extensions
             services.AddSingleton<IJWTHelper, JWTHelper>();
             services.AddSingleton<IAuthBusinessService, AuthBusinessService>();
             services.AddSingleton<ISellerBusinessService, SellerBusinessService>();
+            services.AddSingleton<IBuyerBusinessService, BuyerBusinessService>();
         }
     }
 }

@@ -6,12 +6,22 @@ export interface PropertyEntity {
     place: string;
     area: number;
     info: string;
-    image: any;
+    image: string;
+    contact :ContactDetails;
+    intrestedUserIds: string[];
 }
 
 export interface Property extends BaseResponse{
+    id: string;
     place: string;
     area: number;
     info: string;
     image: string;
+    contact :ContactDetails;
+    intrestedUserIds : string[];
+}
+
+export interface ContactDetails{
+    mobile: string ;
+    email: string;
 }
