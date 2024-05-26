@@ -1,4 +1,4 @@
 export const environment = {
     production: false,
-    apiUrl: 'https://localhost:7238',
+    apiUrl: 'https://d360-test-dotnet.azurewebsites.net',
   };
