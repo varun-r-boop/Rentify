@@ -2,9 +2,9 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Login } from '../../model/auth.model';
-import { ToastrService } from 'ngx-toastr';
 import { AuthService } from '../../services/auth.service';
 import { JwtService } from 'src/app/core/services/jwt.service';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-login',
@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
     private fb: FormBuilder,
     private _authService: AuthService,
     private _router: Router,
-    private _toastr: ToastrService,
+    private _toastr: MessageService,
     private _jwtService: JwtService
   ) {
     this.loginForm = this.fb.group({
@@ -52,8 +52,11 @@ export class LoginComponent implements OnInit {
           var tokenPayload = this._jwtService.getDecodedToken(token);
           window.localStorage.setItem('user-id', tokenPayload.id);
           window.localStorage.setItem('user-details', JSON.stringify(tokenPayload));
-          this._toastr.success('', 'Login Success', {
-            timeOut: 3000,
+          this._toastr.add({
+            severity: 'success',
+            summary: 'Success',
+            detail: 'Login successful',
+            life: 3000,
           });
           if (tokenPayload.role === 'Buyer') {
             this._router.navigate(['/buyer']);
@@ -62,7 +65,13 @@ export class LoginComponent implements OnInit {
           }
         }
       },
-      error: (err) => {},
+      error: (err) => {       
+           this._toastr.add({
+        severity: 'error',
+        summary: 'Error',
+        detail: 'Username password wrong',
+        life: 3000,
+      });},
     });
   }
 

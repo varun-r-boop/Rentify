@@ -1,6 +1,6 @@
 import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { ToastrService } from 'ngx-toastr';
+import { MessageService } from 'primeng/api';
 import { ContactDetails, Property } from 'src/app/features/model/seller.model';
 import { SellerService } from 'src/app/features/services/seller.service';
 
@@ -27,7 +27,7 @@ export class EditPropertyModalComponent implements OnInit {
     intrestedUserIds: [],
     contact: this.contact
   }
-  constructor(public activeModal: NgbActiveModal,private _sellerService: SellerService,private _toastr : ToastrService) {}
+  constructor(public activeModal: NgbActiveModal,private _sellerService: SellerService,private _toastr : MessageService) {}
   ngOnInit(): void {
     this.fetchPropertyById(this.propertyId);
   }
@@ -41,8 +41,11 @@ export class EditPropertyModalComponent implements OnInit {
       this._sellerService.updateProperty(property).subscribe(
         (response) => {
           if(response.isSuccess){
-            this._toastr.success('', 'Updated Successfully', {
-              timeOut: 3000,
+            this._toastr.add({
+              severity: 'success',
+              summary: 'Success',
+              detail: 'Updated successfully',
+              life: 3000,
             });
             this.activeModal.close();
           }else{

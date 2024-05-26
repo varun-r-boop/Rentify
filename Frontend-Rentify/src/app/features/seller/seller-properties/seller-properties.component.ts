@@ -3,7 +3,7 @@ import { SellerService } from '../../services/seller.service';
 import { Property } from '../../model/seller.model';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { EditPropertyModalComponent } from './edit-property-modal/edit-property-modal.component';
-import { ToastrService } from 'ngx-toastr';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-seller-properties',
@@ -13,7 +13,7 @@ import { ToastrService } from 'ngx-toastr';
 export class SellerPropertiesComponent {
   properties: Property[] = [];
   selectedProperty  : any;
-  constructor(private _sellerService: SellerService,private _modalService: NgbModal, private _toastr : ToastrService) { }
+  constructor(private _sellerService: SellerService,private _modalService: NgbModal, private _toastr : MessageService) { }
 
   ngOnInit(): void {
     this.loadProperties();
@@ -45,12 +45,20 @@ export class SellerPropertiesComponent {
   deleteProperty(propertyId : string){
     this._sellerService.deleteProperty(propertyId).subscribe((res)=>{
       if(res && res.isSuccess) {
-        this._toastr.success('', 'Deleted Successfully', {
-          timeOut: 3000,
+        this._toastr.add({
+          severity: 'success',
+          summary: 'Success',
+          detail: 'Deleted successful',
+          life: 3000,
         });
         this.loadProperties();
       }else{
-        console.error("Delete failed")
+        this._toastr.add({
+          severity: 'error',
+          summary: 'Error',
+          detail: 'Delete failed',
+          life: 3000,
+        });  
       }
     });
   }

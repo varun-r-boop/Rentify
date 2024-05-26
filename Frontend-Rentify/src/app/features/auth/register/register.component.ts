@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserEntity, UserType } from '../../model/auth.model';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
-import { ToastrService } from 'ngx-toastr';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-register',
@@ -25,7 +25,7 @@ export class RegisterComponent implements OnInit {
   };
   userType = UserType;
   submitted = false;
-  constructor(private fb: FormBuilder,private _authService: AuthService, private _router: Router,private _toastr: ToastrService
+  constructor(private fb: FormBuilder,private _authService: AuthService, private _router: Router,private _toastr: MessageService
   ) {
     this.registrationForm = this.fb.group({
       firstName: ['', Validators.required],
@@ -64,18 +64,19 @@ export class RegisterComponent implements OnInit {
   fetchRegisterUser(userEntity : UserEntity){
     this._authService.register(userEntity).subscribe((response) => {
       if (response.isSuccess) {
-        this._toastr.success('Register Success', '', {
-          timeOut: 3000,
-          positionClass:'top-right'
-        });
-        this._toastr.success('', 'Register Success', {
-          timeOut: 3000,
+        this._toastr.add({
+          severity: 'success',
+          summary: 'Success',
+          detail: 'Register successful',
+          life: 3000,
         });
         this._router.navigate(['/login'])
       }else{
-        this._toastr.error('Register Failed', '', {
-          timeOut: 3000,
-          positionClass:'top-right'
+        this._toastr.add({
+          severity: 'success',
+          summary: 'Success',
+          detail: 'Register successful',
+          life: 3000,
         });
       }
     });

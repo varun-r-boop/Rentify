@@ -8,12 +8,17 @@ import { SellerPropertyUploadComponent } from "./seller/seller-property-upload/s
 import { SellerPropertiesComponent } from "./seller/seller-properties/seller-properties.component";
 import { SellerGuard } from "../core/guard/seller.guard";
 import { BuyerGuard } from "../core/guard/buyer.guard";
+import { LandingPageComponent } from "./landing-page/landing-page.component";
 
 const routes: Routes = [
     {
         path: '', 
-        redirectTo: '/login', 
+        redirectTo: '/rentify', 
         pathMatch: 'full' 
+    },
+    {
+        path: 'rentify',
+        component: LandingPageComponent,
     },
     {
         path: 'login',
@@ -25,7 +30,6 @@ const routes: Routes = [
     },
     {
         path: 'buyer',
-        canActivate: [BuyerGuard],
         component: BuyerComponent,
     },
     { path: 'seller',    canActivate: [SellerGuard],
@@ -37,7 +41,7 @@ const routes: Routes = [
     },
 ]
 @NgModule({
-    imports: [RouterModule.forChild(routes)],
+    imports: [RouterModule.forRoot(routes, { useHash: true })],
     exports: [RouterModule]
 })
 export class MainRoutingModule {}

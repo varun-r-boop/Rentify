@@ -1,0 +1,58 @@
+img{
+    margin: 5px 5px 5px 20px;
+    height: 50px;
+    width: 50px;
+}
+
+a{
+    text-decoration: none;
+}
+
+h4 {
+    font-size: 40px;
+    font-weight: 600;
+    background-color: white;
+    color: transparent;
+    background-clip: text;
+    -webkit-background-clip: text;
+    margin-top: 5px;
+  }
+:host ::ng-deep .p-button{
+    border-radius: 20px;
+    background-color: white;
+    color: #6366F1;
+    box-shadow: none;
+}
+:host ::ng-deep .p-button:hover{
+    border-radius: 20px;
+    background-color: white;
+    color: #6366F1;
+    
+}
+
+/* :host ::ng-deep .secondary:hover{
+    color: white;
+} */
+:host ::ng-deep .secondary{
+    color: white;
+    margin-bottom: 6px;
+    background-color: #6366F1;
+}
+.btn:hover{
+    background-color: rgba(var(--bs-light-rgb),var(--bs-bg-opacity)) ;
+    color: white;
+    margin-bottom: 0px;
+    border-color: #6366F1;
+    box-shadow: none;
+}
+.btn{
+    background-color: rgba(var(--bs-light-rgb),var(--bs-bg-opacity)) ;
+    color: white;
+    margin-bottom: 0px;
+    border-color: #6366F1;
+    box-shadow: none;
+}
+.navbar{
+    background-color: #6366F1;
+    box-shadow: 0 8px 8px rgba(0, 0, 0, 0.1);
+}

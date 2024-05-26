@@ -2,7 +2,7 @@ import { CanActivate, Router } from "@angular/router";
 import { JwtService } from "../services/jwt.service";
 import { TokenPayload } from "../model/jwt";
 import { Injectable } from "@angular/core";
-import { ToastrService } from "ngx-toastr";
+import { MessageService } from "primeng/api";
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +20,7 @@ export class SellerGuard implements CanActivate {
   constructor(
     private jwtService: JwtService,  
     private router: Router,
-    private _toastr: ToastrService
+    private _toastr: MessageService
   )
   {
 
@@ -37,8 +37,11 @@ export class SellerGuard implements CanActivate {
     }
     else{
       this.router.navigate(['/login']).then(() => {
-        this._toastr.error('', 'Unauthorised', {
-          timeOut: 3000,
+        this._toastr.add({
+          severity: 'error',
+          summary: 'Error',
+          detail: 'Un Authorised',
+          life: 3000,
         });      })
       return false;
     }

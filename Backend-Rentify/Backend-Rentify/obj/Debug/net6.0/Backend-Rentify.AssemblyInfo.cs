@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Backend-Rentify")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+13c5c1a20c5ddcd6b3b26ea3d677900cff17d7c3")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3e5f648dcdd03e8ebe33742daa88886e1586aa6e")]
 [assembly: System.Reflection.AssemblyProductAttribute("Backend-Rentify")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Backend-Rentify")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

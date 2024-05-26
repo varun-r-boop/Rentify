@@ -9,9 +9,10 @@ import { LoadingInterceptor } from './core/interceptor/loading.interceptor';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { MainModule } from './features/main.module';
-import { ToastrModule } from 'ngx-toastr';
+import {ToastModule} from 'primeng/toast';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { MessageService } from 'primeng/api';
 
 @NgModule({
   declarations: [
@@ -24,13 +25,12 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     AppRoutingModule,
     NgxSpinnerModule,
     MainModule,
-    ToastrModule.forRoot({    timeOut: 3000,
-      positionClass: 'toast-top-right',
-      preventDuplicates: true}),
+    ToastModule,
     BrowserAnimationsModule,
     NgbModule,
   ],
-  providers: [  
+  providers: [ 
+    MessageService, 
       { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
       { provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true },
   ],

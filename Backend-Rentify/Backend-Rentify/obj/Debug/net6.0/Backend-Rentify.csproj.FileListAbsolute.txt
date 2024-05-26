@@ -37,7 +37,6 @@ C:\Users\varun\source\repos\Rentify\Backend-Rentify\Backend-Rentify\obj\Debug\ne
 C:\Users\varun\source\repos\Rentify\Backend-Rentify\Backend-Rentify\obj\Debug\net6.0\staticwebassets.build.json
 C:\Users\varun\source\repos\Rentify\Backend-Rentify\Backend-Rentify\obj\Debug\net6.0\staticwebassets.development.json
 C:\Users\varun\source\repos\Rentify\Backend-Rentify\Backend-Rentify\obj\Debug\net6.0\scopedcss\bundle\Backend-Rentify.styles.css
-C:\Users\varun\source\repos\Rentify\Backend-Rentify\Backend-Rentify\obj\Debug\net6.0\Backend-Rentify.csproj.CopyComplete
 C:\Users\varun\source\repos\Rentify\Backend-Rentify\Backend-Rentify\obj\Debug\net6.0\Backend-Rentify.dll
 C:\Users\varun\source\repos\Rentify\Backend-Rentify\Backend-Rentify\obj\Debug\net6.0\refint\Backend-Rentify.dll
 C:\Users\varun\source\repos\Rentify\Backend-Rentify\Backend-Rentify\obj\Debug\net6.0\Backend-Rentify.pdb
@@ -54,3 +53,11 @@ C:\Users\varun\source\repos\Rentify\Backend-Rentify\Backend-Rentify\bin\Debug\ne
 C:\Users\varun\source\repos\Rentify\Backend-Rentify\Backend-Rentify\bin\Debug\net6.0\BCrypt.Net-Next.dll
 C:\Users\varun\source\repos\Rentify\Backend-Rentify\Backend-Rentify\bin\Debug\net6.0\BouncyCastle.Crypto.dll
 C:\Users\varun\source\repos\Rentify\Backend-Rentify\Backend-Rentify\bin\Debug\net6.0\MongoDB.Driver.GridFS.dll
+C:\Users\varun\source\repos\Rentify\Backend-Rentify\Backend-Rentify\obj\Debug\net6.0\Backend-Rentify.csproj.CopyComplete
+C:\Users\varun\source\repos\Rentify\Backend-Rentify\Backend-Rentify\bin\Debug\net6.0\BouncyCastle.Cryptography.dll
+C:\Users\varun\source\repos\Rentify\Backend-Rentify\Backend-Rentify\bin\Debug\net6.0\MailKit.dll
+C:\Users\varun\source\repos\Rentify\Backend-Rentify\Backend-Rentify\bin\Debug\net6.0\MimeKit.dll
+C:\Users\varun\source\repos\Rentify\Backend-Rentify\Backend-Rentify\bin\Debug\net6.0\NETCore.MailKit.dll
+C:\Users\varun\source\repos\Rentify\Backend-Rentify\Backend-Rentify\bin\Debug\net6.0\System.Formats.Asn1.dll
+C:\Users\varun\source\repos\Rentify\Backend-Rentify\Backend-Rentify\bin\Debug\net6.0\System.Security.Cryptography.Pkcs.dll
+C:\Users\varun\source\repos\Rentify\Backend-Rentify\Backend-Rentify\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Security.Cryptography.Pkcs.dll

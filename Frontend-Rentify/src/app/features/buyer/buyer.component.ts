@@ -4,8 +4,10 @@ import { Property } from '../model/seller.model';
 import { PropertyDetailsModalComponent } from './property-details-modal/property-details-modal.component';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { SellerService } from '../services/seller.service';
-import { ToastrService } from 'ngx-toastr';
 import { PaginationData } from '../model/common.model';
+import { JwtService } from 'src/app/core/services/jwt.service';
+import { Router } from '@angular/router';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-buyer',
@@ -13,7 +15,12 @@ import { PaginationData } from '../model/common.model';
   styleUrls: ['./buyer.component.scss']
 })
 export class BuyerComponent implements OnInit {
-  constructor(private _buyerService: BuyerService,private _sellerService : SellerService,private _modalService: NgbModal, private _toastr : ToastrService){
+  constructor(private _buyerService: BuyerService,
+    private _sellerService : SellerService,
+    private _modalService: NgbModal, 
+    private _jwtService:JwtService,
+    private messageService: MessageService,
+  private _router: Router){
   }
   properties : Property[] = [];
   pagination : PaginationData = {
@@ -25,6 +32,16 @@ export class BuyerComponent implements OnInit {
   }
 
   openDetailsModal(propertyId: string) {
+    if(!this._jwtService.checkUserLoggedIn()){
+      this.messageService.add({
+        severity: 'error',
+        summary: 'Error',
+        detail: 'UnAuthorised',
+        life: 3000,
+      });
+      this._router.navigate(['/login']);
+      return;
+    }
     const modalRef = this._modalService.open(PropertyDetailsModalComponent);
     modalRef.componentInstance.propertyId = propertyId;
     modalRef.result.then(() => {
@@ -39,7 +56,12 @@ export class BuyerComponent implements OnInit {
           this.properties.push(property);
         });
       }else{
-        console.error("Failed to load  property")
+        this.messageService.add({
+          severity: 'error',
+          summary: 'Error',
+          detail: 'Failed to load property',
+          life: 3000,
+        });
       }
     });
   }
@@ -53,16 +75,34 @@ export class BuyerComponent implements OnInit {
       this._sellerService.updateProperty(property).subscribe(
         (response) => {
           if(response.isSuccess){
-            this._toastr.success('', 'Notified Owner', {
-              timeOut: 3000,
+            this.messageService.add({
+              severity: 'success',
+              summary: 'Success',
+              detail: 'Notified property owner',
+              life: 3000,
+            });
+            this.messageService.add({
+              severity: 'success',
+              summary: 'Success',
+              detail: 'Check your mail for details',
+              life: 3000,
             });
           }else{
-            console.error('Error loading properties:');
+            this.messageService.add({
+              severity: 'error',
+              summary: 'Error',
+              detail: 'Error ocurred',
+              life: 3000,
+            });
           }
         },
         (error: any) => {
-          console.error('Error loading properties:', error);
-        }
+          this.messageService.add({
+            severity: 'error',
+            summary: 'Error',
+            detail: 'Error ocurred',
+            life: 3000,
+          });     }
       );
     }
   }

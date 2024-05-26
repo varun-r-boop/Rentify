@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { PropertyEntity,ContactDetails } from '../../model/seller.model';
 import { SellerService } from '../../services/seller.service';
-import { ToastrService } from 'ngx-toastr';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-seller-property-upload',
@@ -25,7 +25,7 @@ export class SellerPropertyUploadComponent implements OnInit {
     intrestedUserIds: [],
     contact: this.contact 
   };
-  constructor(private fb: FormBuilder, private _sellerService : SellerService,     private _toastr: ToastrService,
+  constructor(private fb: FormBuilder, private _sellerService : SellerService,     private _toastr: MessageService,
   ) {
     this.propertyForm = this.fb.group({
       place: ['', Validators.required],
@@ -76,9 +76,11 @@ export class SellerPropertyUploadComponent implements OnInit {
   fetchUploadProperty(property: PropertyEntity) {
     this._sellerService.uploadProperty(property).subscribe({
       next: (res) => {
-        this._toastr.success('Success', '', {
-          timeOut: 3000,
-          positionClass:'top-right'
+        this._toastr.add({
+          severity: 'success',
+          summary: 'Success',
+          detail: 'Upload successful',
+          life: 3000,
         });
         this.propertyForm.reset();
       },

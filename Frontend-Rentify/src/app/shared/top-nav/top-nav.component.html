@@ -1,0 +1,15 @@
+<nav class="navbar navbar-light ">
+    
+    <div class="d-flex justify-content-start">
+        <a routerLink="/rentify"><img src="../../../assets/logo/logo.png" width="50px" height="50px" class="d-inline-block align-top" alt=""></a>
+        <a routerLink="/rentify"><h4>Rentify</h4></a>
+    </div>
+    <div class="d-flex justify-content-end">
+        <a *ngIf="!loggedIn" style="cursor: pointer;color: antiquewhite;" routerLink="/login">Login</a>&nbsp; &nbsp; &nbsp; 
+        <a *ngIf="!loggedIn" style="cursor: pointer;color: antiquewhite;" routerLink = "/register">Sign Up</a>&nbsp; &nbsp; &nbsp; 
+        <a *ngIf="loggedIn" style="cursor: pointer;color: antiquewhite;" (click)="logOut()">Logout</a>&nbsp; &nbsp; &nbsp;
+
+    </div>
+</nav>
+
+

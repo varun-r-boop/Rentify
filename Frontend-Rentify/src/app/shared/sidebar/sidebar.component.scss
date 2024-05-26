@@ -1,10 +1,11 @@
 .sidebar {
     width: 60px; /* Make the sidebar thin */
-    background-color: #1274d6;
+    background-color: #6366F1;
     padding-top: 20px;
     position: fixed;
     height: 100vh;
     transition: width 0.3s;
+    box-shadow: 0 8px 8px rgba(0, 0, 0, 0.1);
   
     &:hover {
       width: 200px; /* Expand on hover */

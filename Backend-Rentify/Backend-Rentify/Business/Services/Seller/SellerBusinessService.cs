@@ -1,19 +1,12 @@
-﻿using Amazon.Runtime.Internal;
-using Backend_Rentify.API.Helpers;
-using Backend_Rentify.Business.Models.Auth;
+﻿
 using Backend_Rentify.Business.Models.Seller;
+using Backend_Rentify.Business.Services.Mail;
 using Backend_Rentify.Core.DataAccess;
 using Backend_Rentify.Core.Entities;
 using Backend_Rentify.Core.Models;
-using Microsoft.AspNetCore.Mvc;
-using MongoDB.Bson;
 using MongoDB.Driver;
-using MongoDB.Driver.GridFS;
 using MongoDB.Driver.Linq;
-using Org.BouncyCastle.Asn1.Ocsp;
-using System.Reflection;
-using System.Runtime.InteropServices;
-using static System.Net.Mime.MediaTypeNames;
+
 
 namespace Backend_Rentify.Business.Services.Seller
 {
@@ -21,12 +14,12 @@ namespace Backend_Rentify.Business.Services.Seller
     {
         private readonly IMongoDbContext _mongoDbContext;
         private readonly AppSettings _appSettings;
-        private readonly GridFSBucket _gridFS;
-        public SellerBusinessService(IMongoDbContext mongoDbContext, AppSettings appSettings) 
+        private readonly IMailService _mailService;
+        public SellerBusinessService(IMongoDbContext mongoDbContext, AppSettings appSettings, IMailService mailService) 
         {
             _mongoDbContext = mongoDbContext;
             _appSettings = appSettings;
-            _gridFS = new GridFSBucket(_mongoDbContext.DbClient.GetDatabase(_appSettings.DatabaseName));
+            _mailService = mailService;
         }
 
         public async Task<bool> UploadProperty(PropertyEntity property)
@@ -80,7 +73,9 @@ namespace Backend_Rentify.Business.Services.Seller
             var intrestedUserIds = await GetIntrestedUserIds(property.Id);
             if(property.IntrestedUserIds != null &&  property.IntrestedUserIds.Count > 0)
             {
+                await SendMail(property, property.IntrestedUserIds[property.IntrestedUserIds.Count - 1]);
                 intrestedUserIds.AddRange(property.IntrestedUserIds.Except(intrestedUserIds));
+
             }
             var filter = Builders<PropertyEntity>.Filter.Eq(p => p.Id, property.Id);
             var update = Builders<PropertyEntity>.Update
@@ -104,6 +99,46 @@ namespace Backend_Rentify.Business.Services.Seller
         private async Task<List<string>> GetIntrestedUserIds(string propertyId)
         {
             return await _mongoDbContext.Property.AsQueryable().Where(p => p.Id == propertyId).Select(p => p.IntrestedUserIds).FirstOrDefaultAsync();
+        }
+
+        private async Task<UserEntity> GetUserDetails(string userId)
+        {
+            return await _mongoDbContext.Users.AsQueryable().Where(p => p.Id == userId).FirstOrDefaultAsync();
+        }
+
+        private async Task<UserEntity> GetOwnerDetails(string propertyId)
+        {
+            var userId = await _mongoDbContext.Property.AsQueryable().Where(p => p.Id == propertyId).Select(p => p.UserId).FirstOrDefaultAsync();
+            return await GetUserDetails(userId);
+        }
+        private async Task<bool> SendMail(Property property , string userId)
+        {
+            var user = await GetUserDetails(userId);
+            var owner = await GetOwnerDetails(property.Id);
+            string buyerTemplate = $@"
+                                    <html>
+                                    <body>
+                                        <h2>Rentify</h2>
+                                        <p><b>Property Owner:</b> {owner.FirstName}</p>
+                                        <p><b>Location:</b> {property.Place}</p>
+                                        <p><b>Area:</b> {property.Area}</p>
+                                        <p><b>Info:</b> {property.Info}</p>
+                                        <p><b>Mobile:</b> {property.Contact.Mobile}</p>
+                                        <p><b>Email:</b> {property.Contact.Email}</p>
+                                    </body>
+                                    </html>";
+            string ownerTemplate = $@"
+                                    <html>
+                                    <body>
+                                        <h2>Rentify</h2>
+                                        <p><b>Intrested buyer:</b> {user.FirstName}</p>
+                                        <p><b>Mobile:</b> {user.Mobile}</p>
+                                        <p><b>Email:</b> {user.Email}</p>
+                                    </body>
+                                    </html>";
+            await _mailService.Send(user.Email, "Rentify", buyerTemplate);
+            await _mailService.Send(owner.Email, "Rentify", ownerTemplate);
+            return true;
         }
 
     }
