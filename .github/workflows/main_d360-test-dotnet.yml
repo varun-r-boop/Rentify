@@ -14,7 +14,7 @@ jobs:
     runs-on: windows-latest
     defaults:
       run:
-        working-directory: Rentify/Backend-Rentify/Backend-Rentify
+        working-directory: Backend-Rentify/Backend-Rentify
 
     steps:
       - uses: actions/checkout@v4
