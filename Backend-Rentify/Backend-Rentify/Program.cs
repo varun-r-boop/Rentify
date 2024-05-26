@@ -12,6 +12,7 @@ builder.Services.AddControllers();
 
 // Register the MongoDB context
 builder.Services.AddSingleton<AppSettings>(builder.Configuration.GetSection("AppSettings").Get<AppSettings>());
+builder.Services.RegisterCoreServices();
 builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new OpenApiInfo { Title = "My API", Version = "v1" });
