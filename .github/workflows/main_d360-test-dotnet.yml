@@ -23,7 +23,7 @@ jobs:
           include-prerelease: true
 
       - name: Build with dotnet
-        run: dotnet build Rentify/Backend-Rentify/ --configuration Release
+        run: dotnet build Rentify/Backend-Rentify/Backend-Rentify --configuration Release
 
       - name: dotnet publish
         run: dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/myapp
