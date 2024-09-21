@@ -12,6 +12,9 @@ on:
 jobs:
   build:
     runs-on: windows-latest
+    defaults:
+      run:
+        working-directory: Backend-Rentify/Backend-Rentify
 
     steps:
       - uses: actions/checkout@v4
@@ -22,7 +25,7 @@ jobs:
           dotnet-version: '6.0.x'
 
       - name: Build with dotnet
-        run: dotnet build --configuration Release
+        run: dotnet build --configuration Development
 
       - name: dotnet publish
         run: dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/myapp
