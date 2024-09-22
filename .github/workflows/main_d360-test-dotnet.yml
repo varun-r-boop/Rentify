@@ -29,7 +29,7 @@ jobs:
         run: dotnet build --configuration Development
 
       - name: dotnet publish
-        run: dotnet publish -c Release -o
+        run: dotnet publish -c Release
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
