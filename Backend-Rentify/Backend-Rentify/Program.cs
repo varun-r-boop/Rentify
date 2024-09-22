@@ -45,7 +45,7 @@ app.UseCors(x => x
     .AllowAnyHeader()
     .AllowCredentials()
     .WithExposedHeaders("Authorization")
-    .WithOrigins("https://angular-testdev.azurewebsites.net", "https://localhost:4200 ", "http://localhost:4200"));
+    .WithOrigins("https://angular-varun.azurewebsites.net", "https://localhost:4200 ", "http://localhost:4200"));
 app.UseMiddleware<ErrorHandlerMiddleware>();
 app.UseMiddleware<JWTMiddleware>();
 
